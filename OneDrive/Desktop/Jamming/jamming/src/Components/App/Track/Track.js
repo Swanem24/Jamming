@@ -2,6 +2,11 @@ import React from 'react';
 import './Track.css';
 
 class Track extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.addTrack = this.addTrack.bind(this);
+    }
 
     renderAction() {
         
@@ -11,8 +16,13 @@ class Track extends React.Component {
         }
         else 
         {
-            return <button className="Track-Action">+</button>
+            return <button className="Track-Action"
+                            onClick={this.addTrack}>+</button>
         }
+    }
+
+    addTrack() {
+        this.props.onAdd(this.props.track);
     }
 
     render() {
